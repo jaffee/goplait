@@ -3,9 +3,11 @@ package main
 import (
 	"net"
 	"time"
+	"fmt"
 )
 
 func handleConn(conn net.Conn) {
+	fmt.Printf("New Connection %v\n", conn.RemoteAddr())
 	packet := "HTTP/1.1 200 OK\nContent-Type: text/plain; charset=ascii\n\n"
 	buff := make([]byte, len(packet))
 	copy(buff[:], packet)
