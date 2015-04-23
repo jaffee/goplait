@@ -15,6 +15,7 @@ func main() {
 		//		fmt.Printf("%v, %v", num, err)
 	}
 	for n > 0 {
+		fmt.Println(n)
 		min := get_min(n, arr)
 		var newarr []int
 		for i, _ := range arr {
@@ -25,7 +26,6 @@ func main() {
 		}
 		n = len(newarr)
 		arr = newarr
-		fmt.Println(n)
 	}
 
 	//fmt.Printf("%v %v", n, arr)
