@@ -11,7 +11,9 @@ func main() {
 		var N int
 		fmt.Scan(&N)
 		nums := make([]int, N)
-		fmt.Scanf("%v", &nums)
+		for j := 0; j < N; j++ {
+			fmt.Scan(&nums[j])
+		}
 		printMaxes(nums)
 	}
 }
@@ -20,34 +22,31 @@ func printMaxes(nums []int) {
 	maxcon := nums[0]
 	curcon := nums[0]
 	maxnoncon := nums[0]
-	fmt.Println(nums)
 	for _, n := range nums[1:] {
 		if n >= 0 {
 			if maxcon < 0 {
 				maxcon = n
-				curcon += n
-			} else {
-				curcon += n
 			}
+			curcon += n
 		} else { //n < 0
 			if maxcon < n {
 				maxcon = n
-				curcon = n
 			} else {
-				curcon = 0
+				curcon += n
 			}
 		}
-		if curcon > maxcon {
+		if curcon > maxcon && curcon > 0 {
 			maxcon = curcon
+		}
+		if curcon < 0 {
+			curcon = 0
 		}
 
 		if maxnoncon < 0 {
-			if n < 0 && n > maxnoncon {
-				maxnoncon = n
-			} else {
+			if n > maxnoncon {
 				maxnoncon = n
 			}
-		} else {
+		} else if n > 0 {
 			maxnoncon += n
 		}
 	}
