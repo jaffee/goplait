@@ -1,18 +1,21 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 func main() {
+	r := bufio.NewReader(os.Stdin)
 	var T int
-	fmt.Scan(&T)
+	fmt.Fscan(r, &T)
 	for i := 0; i < T; i++ {
 		var N int
-		fmt.Scan(&N)
+		fmt.Fscan(r, &N)
 		nums := make([]int, N)
 		for j := 0; j < N; j++ {
-			fmt.Scan(&nums[j])
+			fmt.Fscan(r, &nums[j])
 		}
 		printMaxes(nums)
 	}
